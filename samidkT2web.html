@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+  <title>Projet eee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis&display=swap" rel="stylesheet">
+  <style>
+    body {
+      text-align: center;
+      background: url("https://cdn.realsport101.com/images/ncavvykf/epicstream/f59e067faf87368d35fd89d95c9d36eeefc5f956-1664x1080.webp?rect=0,71,1664,937&w=700&h=394&dpr=2");
+      background-size: cover;
+      background-position: center;
+      color: red;
+      font-family: comic;
+    }
+    p {
+      font-family: 'Dosis', sans-serif;
+      font-size: 22px;
+    }
+    input {
+      font-family: 'Bebas Neue', cursive;
+      border: 0;
+      padding: 10px;
+      font-size: 20px;
+    }
+    input[type="Submit"] {
+      background: green;
+      color: blue;
+    }
+    img {
+      border-radius: 50px;
+      }
+			
+
+  </style>
+</head>
+<body>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvgiXBwiNt5bFkJld6dNslvr89Ft7EPAiJaw&usqp=CAU">
+  <p>BECOME A SOUL REAPER TODAY! ONLY 9.99$ A MONTH!</p>
+	<input id="Name" placeholder="Your Name">
+  <input id="Email" type="email" placeholder="Your Email">
+  <input id="submit" type="submit">
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+	import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDqN-Gs_fTNVP2Grnuc9plvBLDLpG0WpSE",
+    authDomain: "samidk-e9859.firebaseapp.com",
+    databaseURL: "https://samidk-e9859-default-rtdb.firebaseio.com",
+    projectId: "samidk-e9859",
+    storageBucket: "samidk-e9859.appspot.com",
+    messagingSenderId: "311276621917",
+    appId: "1:311276621917:web:a7dae8386a3f07f35c7db4"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+	const db = getDatabase(app);
+	
+	const Name = document.querySelector("#Name") 
+	const Email = document.querySelector("#Email")
+	document.querySelector('#submit').addEventListener('click', Submit)
+	function Submit() {
+	  const timestamp = buildTimestamp()
+	  
+	  set(ref(db, timestamp), {
+		  Name: Name.value,
+	      email: Email.value,
+	  });
+
+	  Name.value = ""
+	  Email.value = ""
+	}
+	function buildTimestamp() {
+	  const now = new Date();
+	  let timestamp = now.getFullYear().toString() + "/";
+	  //const month = now.toLocaleString('default', { month: 'long' });
+
+	  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+	  month = month.toString()
+	  month = addLeadingZero(month)
+	  timestamp += month + "/"; 
+
+	  let date = now.getDate().toString()
+	  date = addLeadingZero(date)
+	  timestamp += date + "/";
+
+	  let hours = now.getHours().toString()
+	  hours = addLeadingZero(hours)
+	  timestamp += hours + ":";
+
+	  let minutes = now.getMinutes().toString()
+	  minutes = addLeadingZero(minutes)
+	  timestamp += minutes + ":";
+
+	  let seconds = now.getSeconds().toString()
+	  seconds = addLeadingZero(seconds)
+	  timestamp += seconds;
+  
+	  return timestamp
+	}
+	
+	function addLeadingZero(units) {
+		if (units.length < 2) {
+			units = "0" + units
+		}
+		return units
+	}
+	
+	
+</script>
+</body>
