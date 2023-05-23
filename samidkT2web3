@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shalimar&family=Xanh+Mono&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #2759;
+}
+div {
+  height: 300px;
+  background-size: 100% 100%;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: 'Shalimar', cursive;
+  text-align: center;
+  font-size: 75px;
+  color: #faf;
+  margin: 60px 0 0 0;
+}
+h2 {
+  font-family: 'Shalimar', cursive;
+  font-size: 50px;
+  text-align: center;
+  color: #faf;
+  margin: 0px 0 70px 0;
+}
+p {
+  font-family: 'Xanh Mono', cursive;
+  font-size: 15px;
+  color: rgba(0,55,255,1);
+
+  background: linear-gradient(bottom, rgba(255,122,199,1), rgba(255,122,199,.4));
+  background: -webkit-linear-gradient(bottom, rgba(255,12,199,0.5), rgba(255,122,199,.7));
+  background: -moz-linear-gradient(bottom, rgba(255,122,199,1), rgba(255,122,199,.6));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+  
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first{
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYp-_UnK3nzkUwkD6wBIOIJh7bJxm5ml0ALQ&usqp=CAU");
+}
+.second{
+  background-image: url("https://cdna.artstation.com/p/assets/images/images/032/776/432/large/nishita-rao-captain-price-v1.jpg?1607441406");
+}
+.MainItem {
+  background-image: url("https://www.bing.com/th?u=https%3a%2f%2ftse1.mm.bing.net%2fth%3fid%3dOIP.jswYF5ZdeSTV0RXeUIMMkwHaEK&ehk=SZA9tExt5eAnVQ2UZ%2budjiG0uJsnvih6TXwKMpnIE%2bg%3d&w=130&h=100&c=8&o=6&pid=AppEx");
+}
+.price {
+  float: right;
+}
+input {
+	font-size: 22px;
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>The captain Price item store!</h1>
+<h2>THE BEST PLACE WITH THE BEST PRICE FOR THE CAPTAIN PRICE</h2>
+<div  class="first"  >
+    <input class="quantities" type="number" min="0" style="width: 50px">
+  <p>No Hat Price for Hat<span class="price">$10</span><br />
+  <small>Captain John Price is a fictional character in the Call of Duty series. He is the main protagonist of the original Modern Warfare sub-series. In the trilogy, Price first ranked as a lieutenant, before being promoted to Captain and taking charge of a Special Air Service squad </small></p>
+</div>
+
+<div  class="second" >
+    <input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Bad Art Captain Price PENS <span class="price">$15</span><br />
+  <small>Vladimir Makarov held the photos up of Bravo Six (Gaz, Griggs, Price and John "Soap" MacTavish) and declared they were responsible for the death of Imran Zakhaev. Most likely, it was for this reason why he held a grudge against Price and Soap.</small></p>
+</div>
+  
+<div  class="MainItem" >
+    <input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Original John Captain Price Aftershave <span class="price">$32</span><br />
+  <small> Captain Price serves as the commanding officer of primary protagonist John "Soap" MacTavish. He is also the player character for two flashback missions set in Pripyat in 1996, these being "All Ghillied Up" and "One Shot One Kill". The missions explore an assassination attempt on main antagonist Imran Zakhaev.</small></p>
+</div>
+<br>
+
+
+<br>
+<input id="Name" placeholder="Your Name">
+<input id="Email" type="email" placeholder="Your Email">
+<input id="submit" type="submit">
+<br>
+
+
+<br>
+
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCT9E8q7W4dT1jecKGSAYMNChB0GzvlsFY",
+      authDomain: "samidk3-1e8e5.firebaseapp.com",
+      projectId: "samidk3-1e8e5",
+      storageBucket: "samidk3-1e8e5.appspot.com",
+      messagingSenderId: "873284672377",
+      appId: "1:873284672377:web:16de017aa68f5d0441ada8"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const Name = document.querySelector("#Name") 
+    const quantities = document.querySelectorAll(".quantities")
+    const itemsList = ["hats", "pencils", "shaving"]
+		const prices = document.querySelectorAll(".price")
+	document.querySelector('#submit').addEventListener('click', Submit)
+
+	function Submit() {
+	  const timestamp = buildTimestamp()
+		let total = 0
+    let cart = { }
+	  for  (let i=0; i<quantities.length; i=i+1) {
+	  	if (quantities[i].value != "0" && quantities[i].value != "") {
+			  let price = prices[i].innerHTML.replace('$', '')
+			  total = total + quantities[i].value * price 
+				cart[itemsList[i]] = parseInt(quantities[i].value) 
+	  	}
+	  	quantities[i].value = ""
+	  }
+
+	  
+	  set(ref(db, timestamp), {
+		      Name: Name.value,
+        cart: cart,
+	    email: Email.value,
+		  totalPrice: total,
+		  paid: "not yet",
+      
+	  });
+
+	  Name.value = ""
+	  Email.value = ""
+	}
+	function buildTimestamp() {
+	  const now = new Date();
+	  let timestamp = now.getFullYear().toString() + "/";
+	  //const month = now.toLocaleString('default', { month: 'long' });
+
+	  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+	  month = month.toString()
+	  month = addLeadingZero(month)
+	  timestamp += month + "/"; 
+
+	  let date = now.getDate().toString()
+	  date = addLeadingZero(date)
+	  timestamp += date + "/";
+
+	  let hours = now.getHours().toString()
+	  hours = addLeadingZero(hours)
+	  timestamp += hours + ":";
+
+	  let minutes = now.getMinutes().toString()
+	  minutes = addLeadingZero(minutes)
+	  timestamp += minutes + ":";
+
+	  let seconds = now.getSeconds().toString()
+	  seconds = addLeadingZero(seconds)
+	  timestamp += seconds;
+  
+	  return timestamp
+	}
+	
+	function addLeadingZero(units) {
+		if (units.length < 2) {
+			units = "0" + units
+		}
+		return units
+	}
+</script>
+</body>
